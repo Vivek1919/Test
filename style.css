@@ -40,6 +40,7 @@ body {
     margin: 2rem 0 0 0;
     transition: 0.5s ease;
     overflow-x: hidden;
+
 }
 
 a {
@@ -51,7 +52,7 @@ li {
 }
 
 header {
-    z-index: 99999;
+    z-index: 999999;
     width: 100%;
     position: fixed;
     top: 0;
@@ -60,6 +61,7 @@ header {
     color: var(--first-color);
     background-color: var(--first-color);
     transition: 0.6s ease;
+    overflow-x: hiddem;
 }
 
 header.sticky {
@@ -73,7 +75,7 @@ header.sticky .navigation-bar {
 }
 
 .navigation-bar {
-    position: center;
+    position: relative;
     height: calc(4rem + 1rem);
     max-width: 1250px;
     display: flex;
@@ -135,6 +137,89 @@ header.sticky .navigation-bar {
     font-size: 1.32em;
 }
 
+@media only screen and (max-width: 900px) {
+
+    .navigation {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--first-color);
+        opacity: 0;
+        transition: .3s ease;
+        visibility: hidden;
+    }
+
+    .navigation.active {
+        visibility: visible;
+        opacity: 0.97;
+    }
+
+    .nav-items {
+        position: relative;
+        background: var(--modal-bg-color);
+        width: 300px;
+        max-width: 300px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        transform: translateY(100%);
+        transition: 0.3s ease;
+        opacity: 80%;
+    }
+
+    .navigation.active .nav-items {
+        transform: translateY(0%);
+    }
+
+    .nav-items a {
+        margin: 15px 50px;
+    }
+
+    .nav-close-btn {
+        position: fixed;
+        background: url(images/Cross.jpg) no-repeat;
+        filter: var(--color-filer);
+        background-size: 20px;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .nav-menu-btn {
+        background: url(images/Menu.jpg) no-repeat;
+        filter: var(--color-filer);
+        background-size: 30px;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .media-icons {
+        margin-block-start: 5rem;
+        size: 200px;
+        color: var(--second-color);
+        margin-left: 30px;
+    }
+
+    .media-icons .fb:hover {
+        color: var(--fourth-color);
+        transition: 0.3s ease;
+    }
+}
+
 
 /* video container -----------*/
 
@@ -152,7 +237,20 @@ header.sticky .navigation-bar {
     opacity: 0.4;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .back-video {
+        visibility: hidden;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .home-container {
+        position: relative;
+    }
 }
 
 
@@ -160,7 +258,7 @@ header.sticky .navigation-bar {
 .home {
     position: relative;
     max-width: 1250px;
-    min-height: 100vh;
+    min-height: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 4rem 2rem;
@@ -248,23 +346,21 @@ h2 span {
 .home .scroll-down {
     padding: 1rem;
     color: var(--second-color);
-    justify-content: bottom;
     align-items: bottom;
-    margin-left: 32rem;
-    margin-right: 10rem;
     flex-direction: row;
     opacity: 0.8;
     border-radius: 8px;
     top: 10rem;
     left: 0;
     transition: 0.8s;
+    justify-content: center;
 }
 
 .home .scroll-down i {
     padding-left: 0.3rem;
     animation: arrow-down ease 2s infinite;
     padding-bottom: 10rem;
-
+    justify-content: center;
 }
 
 @keyframes arrow-down {
@@ -277,9 +373,83 @@ h2 span {
   }
 }
 
+
 .home .scroll-down:hover {
     align-content: center;
     transition: 0.8s;
+}
+
+@media only screen and (max-width: 900px) {
+    h2 span {
+        border-color: var(--hover-color);
+        color: var(--fourth-color);
+    }
+
+    .info h3 {
+        color: var(--fourth-color);
+    }
+
+    .media-icons .fb:hover {
+        color: var(--fourth-color);
+    }
+}
+
+@media only screen and (max-width: 1268px) {
+    .home {
+        flex-direction: column;
+        padding: 2rem;
+        max-width: 100vh;
+        min-height: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 4rem 2rem;
+        flex-direction: row;
+    }
+
+    .media-icons .fb {
+        margin-top: 10rem;
+        display: hidden;
+    }
+
+    .info {
+        margin-top: 4rem;
+        font-size: medium;
+        text-align: center;
+    }
+
+    .info h2 {
+        font-size: 3rem;
+        margin-top: 20px;
+    }
+
+    .info h3 {
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .info p {
+        padding-bottom: 25px;
+        padding-top: 7px;
+        font-size: 18px;
+    }
+
+    .info .btn {
+        padding: 1rem;
+        font-size: 16px;
+        justify-content: center;
+        margin: 2rem auto 0 auto;
+        opacity: 100%;
+    }
+
+    .home .scroll-down {
+        visibility: hidden;
+    }
+
+    .home .scroll-down i {
+        padding-left: 0.3rem;
+        animation: none;
+        padding-bottom: 0rem;
+    }
 }
 
 /* About Page-----------*/
@@ -446,6 +616,16 @@ h2 span {
     visibility: disabled;
 }
 
+
+@media only screen and (max-width: 589px) {
+    .about-info .professional-list {
+        margin-bottom: 370px;
+    }
+
+    .about-info img {
+        visibility: hidden;
+    }
+}
 
 
 /* skills Page-----------*/
@@ -649,6 +829,92 @@ h2 span {
 }
 
 
+@media only screen and (max-width: 768px) {
+    /* Remove left and right margins */
+    .skills-info,
+    .edu-list .item,
+    .bar,
+    .experience-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Adjust font sizes */
+    .section-title-03 {
+        font-size: 36px;
+    }
+
+    .skills-description h3 {
+        font-size: 1.5em;
+    }
+
+    .skills-info_ h4 {
+        font-size: 18px;
+        margin: 4px;
+    }
+
+    .edu-list .item p {
+        font-size: 18px;
+    }
+
+    .experience-card h3 {
+        font-size: 1.1em;
+    }
+
+    .experience-card h5 {
+        font-size: 14px;
+    }
+    .experience-card {
+      margin-left: 5%;
+      margin-right: 5%;
+
+    }
+
+    /* Adjust bar width */
+    .bar {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .bar .photography:before {
+        width: 70%;
+    }
+
+    .bar .videography:before {
+        width: 65%;
+    }
+
+    .bar .javascript:before {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .skills-info_ {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-info_,
+    .edu-list,
+    .bar,
+    .experience-card {
+        padding: 10px;
+    }
+
+    .skills-info_ h4 {
+        text-align: center;
+    }
+
+    .bar {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .skills-description p {
+      margin: 10px;
+    }
+}
+
 /* gallery Page-----------*/
 .gallery {
     padding: 2rem 0 0;
@@ -657,10 +923,10 @@ h2 span {
     position: center;
     width: 100%;
     min-height: 100vh;
-    display: flex;
+    display: auto;
     flex-direction: column;
     justify-content: center;
-    background-image: -o-linear-gradient();
+
 }
 
 .section-title-04 {
@@ -675,10 +941,11 @@ h2 span {
 
 .description_container h2 {
     color: var(--fourth-color);
+    display: relative;
 }
 
 .gallery-container {
-    display: relative;
+    display: absolute;
     flex-wrap: nowrap;
     margin: 2rem 0;
     visibility: hidden; 
@@ -686,8 +953,8 @@ h2 span {
 }
 
 .gallery-img-container {
-    width: 100%;
-    height: 56vh;
+    width: 1px;
+    height: 5px;
     object-fit: cover;
     display: none;
     transition: transform 0.2s;
@@ -699,8 +966,8 @@ h2 span {
 }
 
 .gallery-img-container img {
-    width: 35vh;
-    height: 100%;
+    width: 1vh;
+    height: 1%;
     border-radius: 20px;
     background-color: var(--first-color);
 }
@@ -730,27 +997,72 @@ h2 span {
 .gallery-btn-container button:hover {
     color: var(--second-color);
     border-radius: 50%;
-    transform: translateY(-20%);
     opacity: 30%;
 }
 
-
 #image-track > .image{
-  width: 25vmin;
-  height: 56vmin;
+  width: 18vmin;
+  height: 46vmin;
   object-fit: cover;
-
+  top: 0%;
+  bottom: 0%;
 }
 
 #image-track {
-  display: flex;
+  display: auto;
   gap: 4vmin;
+  left: 0%;
   position: flex;
-  left: 25%;
   top: 0%;
-  transform: translate(0% ,-50%);
+  bottom: 0%;
 }
 
+@media only screen and (max-width: 900px){
+
+    .gallery-container {
+        transform: 0;
+        display: flex;
+        margin: 2rem 0;
+        visibility: visible; 
+    
+    }
+    
+    .gallery-img-container {
+        width: 100%;
+        height: 56vh;
+        object-fit: cover;
+        display: none;
+    }
+    
+    .gallery-img-container.active {
+        display: block;
+        transition: 4s;
+    }
+    
+    .gallery-img-container img {
+        width: 35vh;
+        height: 100%;
+        border-radius: 20px;
+        background-color: var(--first-color);
+    }
+    
+    .gallery-container {
+      visibility: visible;
+    }
+  
+  
+    #image-track > .image{
+        width: 1vmin;
+        height: 4vmin;
+      visibility: hidden;
+      z-index: -9999;
+    }
+  
+    .gallery-btn-container button {
+      visibility: visible; 
+      z-index: 9999;
+    }
+  }
 
 /* contact Page-----------*/
 .contact {
@@ -947,6 +1259,24 @@ h2 span {
     color: var(--first-color);
 }
 
+@media only screen and (max-width: 540px) {
+    .g1 img {
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 1240px) {
+    .container2 {
+        display: grid;
+        width: 100%;
+        row-gap: 20px;
+        padding-left: 20px;
+    }
+    .g2 {
+        margin-bottom: 20px;
+    }
+}
+
 /* footer Page-----------*/
 
 footer {
@@ -1014,301 +1344,3 @@ footer a:hover {
     margin-top: 50px;
     text-align: center;
 }
-
-
-/* Responsive for mobile phone----------(NOTE: The Screen resolution are organised according to the acending order (from 589px))*/
-
-@media only screen and (max-width: 589px) {
-  .about-info .professional-list {
-      margin-bottom: 370px;
-  }
-
-  .about-info img {
-      visibility: hidden;
-  }
-
-  .g1 img {
-    height: 450px;
-}
-}
-
-
-@media only screen and (max-width: 768px) {
-  .home-container {
-    position: relative;
-}
-
-  /* Remove left and right margins */
-  .skills-info,
-  .edu-list .item,
-  .bar,
-  .experience-card {
-      margin-left: 0;
-      margin-right: 0;
-  }
-
-  .skills-info,
-  .edu-list ,
-  .bar,
-  .experience-card {
-    padding: 15px;
-  }
-
-  /* Adjust font sizes */
-  .section-title-03 {
-      font-size: 36px;
-  }
-
-  .skills-description h3 {
-      font-size: 1.5em;
-  }
-
-  .skills-info_ h4 {
-      font-size: 18px;
-      margin: 4px;
-      text-align: center;
-  }
-
-  .skills-info_ {
-    grid-template-columns: 1fr;
-}
-
-.bar {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.skills-description p {
-  margin: 10px;
-}
-
-  .edu-list .item p {
-      font-size: 18px;
-  }
-
-  .experience-card h3 {
-      font-size: 1.1em;
-  }
-
-  .experience-card h5 {
-      font-size: 14px;
-  }
-  .experience-card {
-    margin-left: 5%;
-    margin-right: 5%;
-
-  }
-
-  /* Adjust bar width */
-  .bar {
-      margin-left: 10%;
-      margin-right: 10%;
-  }
-
-  .bar .photography:before {
-      width: 70%;
-  }
-
-  .bar .videography:before {
-      width: 65%;
-  }
-
-  .bar .javascript:before {
-      width: 60%;
-  }
-}
- 
-
-
-@media only screen and (max-width: 848px) {
-    .footer-container .group h2 {
-        content: center;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-  .navigation {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--first-color);
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.3s ease;
-  }
-
-  .navigation.active {
-      visibility: visible;
-      opacity: 100%;
-  }
-
-  .nav-items {
-      position: fixed;
-      background: var(--modal-bg-color);
-      width: 300px;
-      max-width: 300px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: var(--box-shadow);
-      transform: translateY(100%);
-      transform: translateX(50%);
-      transition: 0.3s ease;
-      opacity: 80%;
-  }
-
-  .navigation.active .nav-items {
-      transform: translateY(0%);
-  }
-
-  .nav-items a {
-      margin: 15px 50px;
-  }
-
-  .nav-close-btn {
-      position: fixed;
-      background: url(images/Cross.jpg) no-repeat;
-      filter: var(--color-filer);
-      background-size: 20px;
-      background-position: center;
-      width: 40px;
-      height: 40px;
-      top: 10;
-      right: 0;
-      margin-top: 10px;
-      cursor: pointer;
-  }
-
-  .nav-menu-btn {
-      background: url(images/Menu.jpg) no-repeat;
-      filter: var(--color-filer);
-      background-size: 30px;
-      background-position: center;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-  }
-
-  .scroll-down {
-      visibility: hidden;
-  }
-
-  .back-video {
-      visibility: hidden;
-  }
-
-  .media-icons {
-      margin-block-start: 5rem;
-      size: 200px;
-      color: var(--second-color);
-      margin-left: 30px;
-  }
-
-  .media-icons .fb:hover {
-      color: var(--fourth-color);
-      transition: 0.3s ease;
-  }
-
-  h2 span {
-    border-color: var(--hover-color);
-    color: var(--fourth-color);
-}
-
-.info h3 {
-    color: var(--fourth-color);
-}
-
-.gallery-container {
-  margin-top: 110px;
-  visibility: visible;
-}
-
-
-#image-track > .image{
-  visibility: hidden;
-  z-index: -9999;
-}
-
-.gallery-btn-container button {
-  visibility: inherit; 
-  z-index: 9999;
-}
-}
-
-
-@media only screen and (max-width: 1268px) {
-  .home {
-      flex-direction: column;
-      padding: 2rem;
-      max-width: 100vh;
-      min-height: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 4rem 2rem;
-      flex-direction: row;
-  }
-
-  .media-icons .fb {
-      margin-top: 10rem;
-      display: hidden;
-  }
-
-  .info {
-      margin-top: 4rem;
-      font-size: medium;
-      text-align: center;
-  }
-
-  .info h2 {
-      font-size: 3rem;
-      margin-top: 20px;
-  }
-
-  .info h3 {
-      font-size: 20px;
-      padding-top: 10px;
-  }
-
-  .info p {
-      padding-bottom: 25px;
-      padding-top: 7px;
-      font-size: 18px;
-  }
-
-  .info .btn {
-      padding: 1rem;
-      font-size: 16px;
-      justify-content: center;
-      margin: 2rem auto 0 auto;
-      opacity: 100%;
-  }
-
-  .home .scroll-down {
-      visibility: hidden;
-  }
-
-  .home .scroll-down i {
-      padding-left: 0.3rem;
-      animation: none;
-      padding-bottom: 0rem;
-  }
-
-  .container2 {
-    display: grid;
-    width: 100%;
-    row-gap: 20px;
-    padding-left: 20px;
-}
-.g2 {
-    margin-bottom: 20px;
-}
-}
-
-
