@@ -595,6 +595,7 @@ h2 span {
     margin-left: 10px;
     transition: 0.3s ease-in-out;
     font-size: 1.3rem;
+    margin-bottom: 20px;
 }
 
 .about .btn:hover {
@@ -609,6 +610,7 @@ h2 span {
     color: var(--second-color);
     transition: 0.3s ease-in-out;
     margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 .btn i:hover {
@@ -1121,8 +1123,8 @@ h2 span {
     align-content: center;
     justify-content: center;
     position: relative;
-    width: 380px;
-    height: 550px;
+    width: 320px;
+    height: 510px;
     background-color: var(--second-color);
     border-radius: 8px;
     overflow: hidden;
@@ -1133,8 +1135,8 @@ h2 span {
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 380px;
-    height: 550px;
+    width: 320px;
+    height: 510px;
     background: linear-gradient(0deg, transparent, transparent, var(--fourth-color), var(--fourth-color), var(--fourth-color));
     z-index: 1;
     transform-origin: bottom right;
@@ -1178,14 +1180,14 @@ h2 span {
 
 .box form h3 {
     color: var(--first-color);
-    font-weight: 500;
+    font-weight: 310;
     text-align: center;
     letter-spacing: 0.1em;
 }
 
 .box form .inputBox {
     position: relative;
-    width: 300px;
+    width: 230px;
     margin-top: 35px;
 }
 
@@ -1243,12 +1245,12 @@ h2 span {
 .box form input[type="submit"] {
     border: none;
     outline: none;
-    padding: 9px 25px;
+    padding: 9px 15px;
     background: var(--first-color);
     cursor: pointer;
     font-size: 0.9em;
     width: 100%;
-    margin-left: 4px;
+    margin-left: 0px;
     margin-top: 10px;
     border-radius: 4px;
 }
@@ -1261,7 +1263,7 @@ h2 span {
 
 @media only screen and (max-width: 540px) {
     .g1 img {
-        height: 450px;
+        height: 350px;
     }
 }
 
@@ -1273,7 +1275,7 @@ h2 span {
         padding-left: 20px;
     }
     .g2 {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
 
@@ -1325,7 +1327,7 @@ footer a:hover {
 }
 
 .footer-container .info a {
-    margin: 20px;
+    margin: 10px;
 }
 
 .footer-container .follow a {
