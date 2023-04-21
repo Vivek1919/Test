@@ -335,6 +335,7 @@ h2 span {
 }
 .info .btn i {
     padding-left: 0.5rem;
+    padding-top: 1rem;
 }
 
 .info .btn:hover {
