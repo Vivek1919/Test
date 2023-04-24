@@ -185,7 +185,7 @@ header.sticky .navigation-bar {
 
     .nav-close-btn {
         position: fixed;
-        background: url(images/Cross.jpg) no-repeat;
+        background: url(images/cross.jpg) no-repeat;
         filter: var(--color-filer);
         background-size: 20px;
         background-position: center;
@@ -198,7 +198,7 @@ header.sticky .navigation-bar {
     }
 
     .nav-menu-btn {
-        background: url(images/Menu.jpg) no-repeat;
+        background: url(images/menu.jpg) no-repeat;
         filter: var(--color-filer);
         background-size: 30px;
         background-position: center;
@@ -838,8 +838,8 @@ h2 span {
     .edu-list .item,
     .bar,
     .experience-card {
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     /* Adjust font sizes */
@@ -1019,6 +1019,16 @@ h2 span {
   top: 0%;
   bottom: 0%;
 }
+
+.image-text {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px;
+  }
+  
 
 @media only screen and (max-width: 900px){
 
@@ -1328,7 +1338,7 @@ footer a:hover {
 }
 
 .footer-container .info a {
-    margin: 10px;
+    margin: 40px;
 }
 
 .footer-container .follow a {
@@ -1347,3 +1357,15 @@ footer a:hover {
     margin-top: 50px;
     text-align: center;
 }
+
+
+@media only screen and (max-width: 680px) {
+
+.footer-container .info a {
+    margin: 10px;
+}
+
+
+}
+
+
