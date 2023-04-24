@@ -89,54 +89,44 @@ navItems.forEach((navItem) => {
 document.addEventListener("DOMContentLoaded", function() {
   const track = document.getElementById("image-track");
 
-  window.onmousedown = e => {
-    track.dataset.mouseDownAt = e.clientX;
-  };
-  
-  window.onmouseup = () => {
-    track.dataset.mouseDownAt = "0";
-    track.dataset.prevPercentage = track.dataset.percentage;
-  };
-
-  window.onmousemove = e => {
-    if (track.dataset.mouseDownAt === "0") return;
-
-    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX;
+  track.addEventListener('mousemove', function(e) {
+    const images = track.getElementsByClassName("image");
     const maxDelta = window.innerWidth * 0.9;
+    const endPoint = -((images.length - 1) * 25);
+    const maxNextPercentage = 20;
 
-    let percentage = (mouseDelta / maxDelta) * -100;
-    let nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      const imageRect = image.getBoundingClientRect();
+      const mouseDelta = e.clientX - (imageRect.left + imageRect.width / 2);
+      const percentage = (mouseDelta / maxDelta) * -100;
 
-   // set the end point of the track
-const endPoint = -((track.children.length - 1) * 45);
+      let nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
 
-// set the max value for nextPercentage
-const maxNextPercentage = 100;
+      if (nextPercentage > 0) {
+        nextPercentage = 0;
+      } else if (nextPercentage < endPoint || nextPercentage < -maxNextPercentage) {
+        nextPercentage = Math.max(endPoint, -maxNextPercentage);
+      }
 
-// stop dragging when reaching the end of the track or the max value
-if (nextPercentage > 0) {
-  nextPercentage = 0;
-} else if (nextPercentage < endPoint || nextPercentage < -maxNextPercentage) {
-  nextPercentage = Math.max(endPoint, -maxNextPercentage);
-}
-
-    track.dataset.percentage = nextPercentage;
-    track.style.transform = `translate(${nextPercentage}%, -50%)`;
-
-    track.animate(
-      { transform: `translate(${nextPercentage}%, -80%)` },
-      { duration: 1200, fill: "forwards" }
-    );
-
-    for (const image of track.getElementsByClassName("image")) {
       image.style.objectPosition = `${nextPercentage + 100}% 100%`;
       
       image.animate(
-        { objectPosition: `${80 + nextPercentage}% center` },
-        { duration: 1600, fill: "forwards" }
+        { objectPosition: `${60 + nextPercentage}% center` },
+        { duration: 200, fill: "forwards" }
       );
     }
-  };
+  });
+
+  track.addEventListener('mouseleave', function() {
+    const images = track.getElementsByClassName("image");
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      image.style.objectPosition = "center bottom";
+    }
+  });
 });
+
+
 
 

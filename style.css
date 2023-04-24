@@ -989,8 +989,8 @@ h2 span {
     background-color: var(--first-color);
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 20%;
     opacity: 70%;
     transition: 0.6s;
